@@ -16,22 +16,21 @@ namespace SharpClock
         {
             InitializeComponent();
         }
-
-        public void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
         public void timer1_Tick(object sender, EventArgs e)
         {
-            Clock.Text = DateTime.Now.ToString("HH:mm:ss");
+            Clock.Text = DateTime.Now.ToString("  HH:mm:ss");
         }
-
-        private void clock_Click(object sender, EventArgs e)
+        public void timer2_Tick(object sender, EventArgs e)
         {
-
+            Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void Clock_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClockForm_Load(object sender, EventArgs e)
         {
 
         }
