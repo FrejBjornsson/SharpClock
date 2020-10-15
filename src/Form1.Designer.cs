@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Clock = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.ClockTimer = new System.Windows.Forms.Timer(this.components);
+            this.DateTimer = new System.Windows.Forms.Timer(this.components);
             this.Date = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -49,17 +49,17 @@
             this.Clock.Text = "Clock";
             this.Clock.Click += new System.EventHandler(this.Clock_Click);
             // 
-            // timer1
+            // ClockTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.ClockTimer.Enabled = true;
+            this.ClockTimer.Interval = 1;
+            this.ClockTimer.Tick += new System.EventHandler(this.ClockTimer_Tick);
             // 
-            // timer2
+            // DateTimer
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 1;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.DateTimer.Enabled = true;
+            this.DateTimer.Interval = 1;
+            this.DateTimer.Tick += new System.EventHandler(this.DateTimer_Tick);
             // 
             // Date
             // 
@@ -102,9 +102,9 @@
         #endregion
 
         private System.Windows.Forms.Label Clock;
-        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Timer ClockTimer;
         public System.Windows.Forms.Label Date;
-        public System.Windows.Forms.Timer timer2;
+        public System.Windows.Forms.Timer DateTimer;
     }
 }
 

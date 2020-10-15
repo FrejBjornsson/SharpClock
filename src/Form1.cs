@@ -16,11 +16,11 @@ namespace SharpClock
         {
             InitializeComponent();
         }
-        public void timer1_Tick(object sender, EventArgs e)
+        public void ClockTimer_Tick(object sender, EventArgs e)
         {
             Clock.Text = DateTime.Now.ToString("  HH:mm:ss");
         }
-        public void timer2_Tick(object sender, EventArgs e)
+        public void DateTimer_Tick(object sender, EventArgs e)
         {
             Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
