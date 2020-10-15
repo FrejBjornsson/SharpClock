@@ -18,11 +18,11 @@ namespace SharpClock
         }
         public void ClockTimer_Tick(object sender, EventArgs e)
         {
-            Clock.Text = DateTime.Now.ToString("  HH:mm:ss");
+            Clock.Text = DateTime.Now.ToString("T");
         }
         public void DateTimer_Tick(object sender, EventArgs e)
         {
-            Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            Date.Text = DateTime.Now.ToString("d");
         }
 
         private void Clock_Click(object sender, EventArgs e)
