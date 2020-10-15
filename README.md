@@ -1,4 +1,4 @@
-# What is C-sharp-LOCK?
+# What is SharpClock?
 A Digital Clock Windows Forms Application written in C#.  
 
 # Specifications
