@@ -1,8 +1,14 @@
-# What is SharpClock?
+# What is SharpClock? :clock130:
 A Digital Clock Windows Forms Application written in C#.  
 
-# Specifications
+# :small_blue_diamond: Specifications
 Date, Hour, Minutes, Seconds.
 
-# Want to contribute?
+# :small_blue_diamond: Want to contribute? :heart:
 If you want to add more functionalities. E.g. time zones. Please share ideas via Issues or simply make a PR. All help is welcome.
+
+# :small_blue_diamond: How to run the project 
+Fork this repository, clone your repo into Visual Studio and run the app. 
+
+# :small_blue_diamond: Contributors
+@FrejBjornsson :star:
