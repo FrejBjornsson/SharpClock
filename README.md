@@ -11,4 +11,4 @@ If you want to add more functionalities. E.g. time zones. Please share ideas via
 Fork this repository, clone your repo into Visual Studio and run the app. 
 
 # :small_blue_diamond: Contributors
-@FrejBjornsson :star:
+https://github.com/FrejBjornsson :star:
