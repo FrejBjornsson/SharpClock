@@ -11,5 +11,5 @@ If you want to add more functionalities. E.g. time zones. Please share ideas via
 Fork this repository, clone your repo into Visual Studio and run the app. 
 
 # Contributors
-![FrejBjornsson](https://github.com/FrejBjornsson) :star:
-![calderaricaio](https://github.com/calderaricaio) :star:
+[FrejBjornsson](https://github.com/FrejBjornsson) :star:
+[calderaricaio](https://github.com/calderaricaio) :star:
