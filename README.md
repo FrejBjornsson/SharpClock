@@ -1,4 +1,4 @@
-# What is SharpClock? :clock130:
+# What is SharpClock? :clock3:
 A Digital Clock Windows Forms Application written in C#.  
 
 # :small_blue_diamond: Specifications
