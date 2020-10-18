@@ -19,6 +19,6 @@ Date: yyyy/MM/dd. <br> Time: hh/mm/ss.
 If you want to add more functionalities. E.g. time zones. Please share ideas via Issues or simply make a PR. All help is welcome.
 
 # How do i run this project?
-Fork this repository, clone your repo into Visual Studio and run the app. 
+Fork this repository, clone your forked repo into Visual Studio and run the project. 
 
 
