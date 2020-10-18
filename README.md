@@ -9,16 +9,16 @@ SharpClock is a Digital Clock Windows Forms Application written in C#. <br> Cont
 # Contributors
 Logo design: [calderaricaio](https://github.com/calderaricaio) :star:
 
-# What is SharpClock?:clock3:
+# What is SharpClock? 
 A Digital Clock Windows Forms Application written in C#.  
 
-# Specifications:small_blue_diamond:
-Date, Hour, Minutes, Seconds.
+# Specifications
+Date: yyyy/MM/dd. <br> Time: hh/mm/ss.
 
-# Want to contribute?:heart:
+# Want to contribute? :heart:
 If you want to add more functionalities. E.g. time zones. Please share ideas via Issues or simply make a PR. All help is welcome.
 
-# How to run the project :small_blue_diamond:
+# How do i run this project?
 Fork this repository, clone your repo into Visual Studio and run the app. 
 
 
