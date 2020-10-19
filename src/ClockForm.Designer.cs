@@ -1,4 +1,6 @@
-﻿namespace SharpClock
+﻿using System;
+
+namespace SharpClock
 {
     partial class ClockForm
     {
@@ -29,25 +31,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClockForm));
             this.Clock = new System.Windows.Forms.Label();
             this.ClockTimer = new System.Windows.Forms.Timer(this.components);
             this.DateTimer = new System.Windows.Forms.Timer(this.components);
             this.Date = new System.Windows.Forms.Label();
+            this.AnalogClockBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.AnalogClockBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Clock
             // 
-            this.Clock.AutoSize = true;
+            resources.ApplyResources(this.Clock, "Clock");
             this.Clock.BackColor = System.Drawing.Color.Transparent;
             this.Clock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Clock.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Clock.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Clock.Location = new System.Drawing.Point(0, 0);
             this.Clock.Name = "Clock";
-            this.Clock.Size = new System.Drawing.Size(119, 54);
-            this.Clock.TabIndex = 0;
-            this.Clock.Text = "Clock";
-            this.Clock.Click += new System.EventHandler(this.Clock_Click);
             // 
             // ClockTimer
             // 
@@ -63,40 +62,43 @@
             // 
             // Date
             // 
-            this.Date.AutoSize = true;
+            resources.ApplyResources(this.Date, "Date");
             this.Date.BackColor = System.Drawing.Color.Transparent;
             this.Date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Date.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Date.ForeColor = System.Drawing.Color.Maroon;
-            this.Date.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Date.Location = new System.Drawing.Point(0, 54);
+            this.Date.ForeColor = System.Drawing.Color.ForestGreen;
             this.Date.Name = "Date";
-            this.Date.Size = new System.Drawing.Size(99, 62);
-            this.Date.TabIndex = 1;
-            this.Date.Text = "Date";
             this.Date.UseCompatibleTextRendering = true;
             this.Date.UseMnemonic = false;
             // 
+            // AnalogClockBox
+            // 
+            resources.ApplyResources(this.AnalogClockBox, "AnalogClockBox");
+            this.AnalogClockBox.Name = "AnalogClockBox";
+            this.AnalogClockBox.TabStop = false;
+            this.AnalogClockBox.Click += new System.EventHandler(this.PictureBox1_Click);
+            // 
             // ClockForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AnalogClockBox);
             this.Controls.Add(this.Date);
             this.Controls.Add(this.Clock);
             this.ForeColor = System.Drawing.Color.ForestGreen;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClockForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ClockForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.AnalogClockBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -105,6 +107,7 @@
         public System.Windows.Forms.Timer ClockTimer;
         public System.Windows.Forms.Label Date;
         public System.Windows.Forms.Timer DateTimer;
+        private System.Windows.Forms.PictureBox AnalogClockBox;
     }
 }
 
