@@ -102,6 +102,12 @@ namespace SharpClock
             }
             return coord;
         }
+
+        private void PictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         //coord for hour   
         private int[] HrCoord(int hval, int mval, int hlen)
         {
