@@ -17,6 +17,8 @@ namespace SharpClock
         int cy, cx;
         Bitmap bmp;
         Graphics cg;
+        private ComboBox timeZonePicker;
+        private TextBox selectedTimeZone;
 
         public ClockForm()
         {
@@ -43,7 +45,57 @@ namespace SharpClock
             t.Interval = 1; // i.e. tick in milisecond   
             t.Tick += new EventHandler(this.Tick);
             t.Start();
+
+            // TODO: Remove when done testing
+            selectedTimeZone = new System.Windows.Forms.TextBox();
+            selectedTimeZone.ScrollBars = ScrollBars.Vertical;
+            selectedTimeZone.Location = new System.Drawing.Point(64, 128);
+            selectedTimeZone.Multiline = true;
+            selectedTimeZone.Name = "Selected Timezone";
+            selectedTimeZone.ReadOnly = true;
+            selectedTimeZone.Size = new System.Drawing.Size(184, 120);
+            selectedTimeZone.TabIndex = 4;
+            selectedTimeZone.Text = "Selected Timezone:";
+            this.Controls.Add(selectedTimeZone);
+
+            // TODO: Refactor into it's own function.
+            timeZonePicker = new ComboBox();
+            string[] timeZones = new string[] { "New York", "China", "Europe" };
+            timeZonePicker.Items.AddRange(timeZones);
+            timeZonePicker.Location = new System.Drawing.Point(136, 136);
+            timeZonePicker.IntegralHeight = false;
+            timeZonePicker.MaxDropDownItems = 5;
+            timeZonePicker.DropDownStyle = ComboBoxStyle.DropDownList;
+            timeZonePicker.Name = "ComboBox1";
+            timeZonePicker.Size = new System.Drawing.Size(136, 81);
+            timeZonePicker.TabIndex = 0;
+            this.Controls.Add(timeZonePicker);
+            timeZonePicker.SelectedIndexChanged += new EventHandler(TimeZonePicker_SelectedIndexChanged);
         }
+
+        private void TimeZonePicker_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+            ComboBox comboBox = (ComboBox) sender;
+
+            string timeZone = (string)timeZonePicker.SelectedItem;
+
+            int count = 0;
+            int resultIndex = -1;
+
+            resultIndex = timeZonePicker.FindStringExact(timeZone);
+
+            while (resultIndex!=-1)
+            {
+                timeZonePicker.Items.RemoveAt(resultIndex);
+                count += 1;
+                resultIndex = timeZonePicker.FindStringExact(timeZone, resultIndex);
+            }
+
+            selectedTimeZone.Text = timeZone;
+
+        }
+
         private void Tick(object sender, EventArgs e)
         {
             // create an image   
