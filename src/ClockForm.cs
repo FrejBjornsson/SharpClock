@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SharpClock
@@ -60,7 +61,7 @@ namespace SharpClock
 
             // TODO: Refactor into it's own function.
             timeZonePicker = new ComboBox();
-            string[] timeZones = new string[] { "New York", "China", "Europe" };
+            string[] timeZones = TimeZoneInfo.GetSystemTimeZones().Select(tz => tz.Id).ToArray();
             timeZonePicker.Items.AddRange(timeZones);
             timeZonePicker.Location = new System.Drawing.Point(136, 136);
             timeZonePicker.IntegralHeight = false;
@@ -80,20 +81,10 @@ namespace SharpClock
 
             string timeZone = (string)timeZonePicker.SelectedItem;
 
-            int count = 0;
-            int resultIndex = -1;
+            string timeZoneInfo = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById(timeZone)).ToString();
 
-            resultIndex = timeZonePicker.FindStringExact(timeZone);
 
-            while (resultIndex!=-1)
-            {
-                timeZonePicker.Items.RemoveAt(resultIndex);
-                count += 1;
-                resultIndex = timeZonePicker.FindStringExact(timeZone, resultIndex);
-            }
-
-            selectedTimeZone.Text = timeZone;
-
+            selectedTimeZone.Text = timeZoneInfo;
         }
 
         private void Tick(object sender, EventArgs e)
