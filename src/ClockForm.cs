@@ -175,11 +175,6 @@ namespace SharpClock
 
         }
 
-        private void Date_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //coord for hour   
         private int[] HrCoord(int hval, int mval, int hlen)
         {
