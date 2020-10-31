@@ -21,7 +21,6 @@ namespace SharpClock
         Graphics cg;
         private string timeZone;
         private ComboBox timeZonePicker;
-        private TextBox selectedTimeZone;
 
         public ClockForm()
         {
@@ -31,11 +30,7 @@ namespace SharpClock
         {
             if (!String.IsNullOrEmpty(timeZone))
             {
-                DateTime timeUtc = DateTime.UtcNow;
-                TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
-                DateTime timeZoneInfoTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, timeZoneInfo);
-
-                Clock.Text = timeZoneInfoTime.ToString("T");
+                Clock.Text = FetchTimeZoneInfo().ToString("T");
             } else
             {
                 Clock.Text = DateTime.Now.ToString("T");
@@ -45,11 +40,7 @@ namespace SharpClock
         {
             if (!String.IsNullOrEmpty(timeZone))
             {
-                DateTime timeUtc = DateTime.UtcNow;
-                TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
-                DateTime timeZoneInfoTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, timeZoneInfo);
-
-                Date.Text = timeZoneInfoTime.Date.ToString("d");
+                Date.Text = FetchTimeZoneInfo().Date.ToString("d");
             }
             else
             {
@@ -65,33 +56,25 @@ namespace SharpClock
             cy = HEIGHT / 2;
             //backcolor   
             this.BackColor = Color.Black;
+            // TimeZonePicker Dropdown
+            TimeZonePicker();
             //timer   
             t.Interval = 1; // i.e. tick in milisecond   
             t.Tick += new EventHandler(this.Tick);
             t.Start();
+        }
 
-            // TODO: Remove when done testing
-            //selectedTimeZone = new System.Windows.Forms.TextBox();
-            //selectedTimeZone.ScrollBars = ScrollBars.Vertical;
-            //selectedTimeZone.Location = new System.Drawing.Point(64, 128);
-            //selectedTimeZone.Multiline = true;
-            //selectedTimeZone.Name = "Selected Timezone";
-            //selectedTimeZone.ReadOnly = true;
-            //selectedTimeZone.Size = new System.Drawing.Size(184, 120);
-            //selectedTimeZone.TabIndex = 4;
-            //selectedTimeZone.Text = "Selected Timezone:";
-            //this.Controls.Add(selectedTimeZone);
-
-            // TODO: Refactor into it's own function.
+        private void TimeZonePicker()
+        {
             timeZonePicker = new ComboBox();
             string[] timeZones = TimeZoneInfo.GetSystemTimeZones().Select(tz => tz.Id).ToArray();
             timeZonePicker.Items.AddRange(timeZones);
-            timeZonePicker.Location = new System.Drawing.Point(100, 172);
+            timeZonePicker.Location = new System.Drawing.Point(64, 320);
             timeZonePicker.IntegralHeight = false;
             timeZonePicker.MaxDropDownItems = 5;
             timeZonePicker.DropDownStyle = ComboBoxStyle.DropDownList;
             timeZonePicker.Name = "ComboBox1";
-            timeZonePicker.Size = new System.Drawing.Size(136, 81);
+            timeZonePicker.Size = new System.Drawing.Size(240, 80);
             timeZonePicker.TabIndex = 0;
             this.Controls.Add(timeZonePicker);
             timeZonePicker.SelectedIndexChanged += new EventHandler(TimeZonePicker_SelectedIndexChanged);
@@ -103,6 +86,15 @@ namespace SharpClock
             ComboBox comboBox = (ComboBox) sender;
 
             timeZone = (string)timeZonePicker.SelectedItem;
+        }
+
+        private DateTime FetchTimeZoneInfo()
+        {
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
+            DateTime timeZoneInfoTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, timeZoneInfo);
+
+            return timeZoneInfoTime;
         }
 
         private void Tick(object sender, EventArgs e)
@@ -117,13 +109,10 @@ namespace SharpClock
             //get time 
             if (!String.IsNullOrEmpty(timeZone))
             {
-                DateTime timeUtc = DateTime.UtcNow;
-                TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
-                DateTime timeZoneInfoTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, timeZoneInfo);
-
-                ss = timeZoneInfoTime.Second;
-                mm = timeZoneInfoTime.Minute;
-                hh = timeZoneInfoTime.Hour;
+                var timeZoneInfo = FetchTimeZoneInfo();
+                ss = timeZoneInfo.Second;
+                mm = timeZoneInfo.Minute;
+                hh = timeZoneInfo.Hour;
             } else
             {
                 ss = DateTime.Now.Second;
