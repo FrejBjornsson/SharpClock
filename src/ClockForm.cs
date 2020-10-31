@@ -16,6 +16,7 @@ namespace SharpClock
 
         // in center   
         int cy, cx;
+
         Bitmap bmp;
         Graphics cg;
         private ComboBox timeZonePicker;
@@ -81,10 +82,11 @@ namespace SharpClock
 
             string timeZone = (string)timeZonePicker.SelectedItem;
 
-            string timeZoneInfo = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById(timeZone)).ToString();
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
+            DateTime timeZoneInfoTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, timeZoneInfo);
 
-
-            selectedTimeZone.Text = timeZoneInfo;
+            Date.Text = timeZoneInfoTime.ToString("d");
         }
 
         private void Tick(object sender, EventArgs e)
