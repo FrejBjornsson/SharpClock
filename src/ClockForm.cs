@@ -66,6 +66,11 @@ namespace SharpClock
 
         private void TimeZonePicker()
         {
+            var label = new Label();
+            label.Text = "Select Time Zone";
+            label.ForeColor = System.Drawing.Color.White;
+            label.Location = new System.Drawing.Point(32, 316);
+            this.Controls.Add(label);
             timeZonePicker = new ComboBox();
             string[] timeZones = TimeZoneInfo.GetSystemTimeZones().Select(tz => tz.Id).ToArray();
             timeZonePicker.Items.AddRange(timeZones);
@@ -74,7 +79,7 @@ namespace SharpClock
             timeZonePicker.MaxDropDownItems = 5;
             timeZonePicker.DropDownStyle = ComboBoxStyle.DropDownList;
             timeZonePicker.Name = "ComboBox1";
-            timeZonePicker.Size = new System.Drawing.Size(224, 80);
+            timeZonePicker.Size = new System.Drawing.Size(232, 80);
             timeZonePicker.TabIndex = 0;
             this.Controls.Add(timeZonePicker);
             timeZonePicker.SelectedIndexChanged += new EventHandler(TimeZonePicker_SelectedIndexChanged);
