@@ -71,6 +71,7 @@ namespace SharpClock
             this.Date.Name = "Date";
             this.Date.UseCompatibleTextRendering = true;
             this.Date.UseMnemonic = false;
+            this.Date.Click += new System.EventHandler(this.Date_Click);
             // 
             // AnalogClockBox
             // 

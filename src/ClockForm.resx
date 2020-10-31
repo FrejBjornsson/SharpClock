@@ -71,10 +71,10 @@
   </data>
   <assembly alias="System.Drawing.Primitives" name="System.Drawing.Primitives, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Clock.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>54, 226</value>
+    <value>25, 176</value>
   </data>
   <data name="Clock.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>149, 67</value>
+    <value>119, 54</value>
   </data>
   <data name="Clock.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>0</value>
@@ -110,10 +110,10 @@
     <value>TopLeft</value>
   </data>
   <data name="Date.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>34, 293</value>
+    <value>25, 241</value>
   </data>
   <data name="Date.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>124, 76</value>
+    <value>99, 62</value>
   </data>
   <data name="Date.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>1</value>
@@ -140,7 +140,10 @@
     <value>None</value>
   </data>
   <data name="AnalogClockBox.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>377, 142</value>
+    <value>313, 126</value>
+  </data>
+  <data name="AnalogClockBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="AnalogClockBox.Size" type="System.Drawing.Size, System.Drawing.Primitives">
     <value>334, 316</value>
@@ -363,10 +366,13 @@
 </value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>183, 12</value>
+    <value>133, 8</value>
+  </data>
+  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>395, 96</value>
+    <value>395, 93</value>
   </data>
   <data name="pictureBox1.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>3</value>
@@ -387,16 +393,16 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>25</value>
+    <value>150</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing.Primitives">
-    <value>8, 20</value>
+    <value>7, 15</value>
   </data>
   <data name="$this.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>743, 518</value>
+    <value>650, 443</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -801,9 +807,6 @@
   </data>
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

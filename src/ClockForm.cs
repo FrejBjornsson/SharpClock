@@ -69,12 +69,12 @@ namespace SharpClock
             timeZonePicker = new ComboBox();
             string[] timeZones = TimeZoneInfo.GetSystemTimeZones().Select(tz => tz.Id).ToArray();
             timeZonePicker.Items.AddRange(timeZones);
-            timeZonePicker.Location = new System.Drawing.Point(64, 320);
+            timeZonePicker.Location = new System.Drawing.Point(32, 340);
             timeZonePicker.IntegralHeight = false;
             timeZonePicker.MaxDropDownItems = 5;
             timeZonePicker.DropDownStyle = ComboBoxStyle.DropDownList;
             timeZonePicker.Name = "ComboBox1";
-            timeZonePicker.Size = new System.Drawing.Size(240, 80);
+            timeZonePicker.Size = new System.Drawing.Size(224, 80);
             timeZonePicker.TabIndex = 0;
             this.Controls.Add(timeZonePicker);
             timeZonePicker.SelectedIndexChanged += new EventHandler(TimeZonePicker_SelectedIndexChanged);
@@ -171,6 +171,11 @@ namespace SharpClock
         }
 
         private void PictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Date_Click(object sender, EventArgs e)
         {
 
         }
