@@ -11,8 +11,6 @@ SharpClock is a Digital Clock Windows Forms Application written in C#. <br> Cont
 <br>
 [calderaricaio](https://github.com/calderaricaio) :star:
 <br>
-[FrejBjornsson](https://github.com/FrejBjornsson) :star:
-
 
 # What is SharpClock? 
 A Digital Clock Windows Forms Application written in C#.
