@@ -17,10 +17,10 @@ namespace SharpClock
         // in center   
         int cy, cx;
 
-        Bitmap bmp;
-        Graphics cg;
-        private string timeZone;
-        private ComboBox timeZonePicker;
+        public Bitmap bmp;
+        public Graphics cg;
+        public string timeZone;
+        public ComboBox timeZonePicker;
 
         public ClockForm()
         {
@@ -47,7 +47,7 @@ namespace SharpClock
                 Date.Text = DateTime.Now.ToString("d");
             }
         }
-        private void ClockForm_Load(object sender, EventArgs e)
+        public void ClockForm_Load(object sender, EventArgs e)
         {
             // create a new bitmap   
             bmp = new Bitmap(WIDTH + 1, HEIGHT + 1);
@@ -64,28 +64,30 @@ namespace SharpClock
             t.Start();
         }
 
-        private void TimeZonePicker()
+        public void TimeZonePicker()
         {
             var label = new Label();
             label.Text = "Select Time Zone";
             label.ForeColor = System.Drawing.Color.White;
-            label.Location = new System.Drawing.Point(32, 316);
+            label.BackColor = System.Drawing.Color.Transparent;
+            label.Location = new System.Drawing.Point(40, 430);
+            label.Size = new System.Drawing.Size(200, 20);
             this.Controls.Add(label);
             timeZonePicker = new ComboBox();
             string[] timeZones = TimeZoneInfo.GetSystemTimeZones().Select(tz => tz.Id).ToArray();
             timeZonePicker.Items.AddRange(timeZones);
-            timeZonePicker.Location = new System.Drawing.Point(32, 340);
+            timeZonePicker.Location = new System.Drawing.Point(40, 450);
             timeZonePicker.IntegralHeight = false;
             timeZonePicker.MaxDropDownItems = 5;
             timeZonePicker.DropDownStyle = ComboBoxStyle.DropDownList;
             timeZonePicker.Name = "ComboBox1";
-            timeZonePicker.Size = new System.Drawing.Size(232, 80);
+            timeZonePicker.Size = new System.Drawing.Size(300, 10);
             timeZonePicker.TabIndex = 0;
             this.Controls.Add(timeZonePicker);
             timeZonePicker.SelectedIndexChanged += new EventHandler(TimeZonePicker_SelectedIndexChanged);
         }
 
-        private void TimeZonePicker_SelectedIndexChanged(object sender, System.EventArgs e)
+        public void TimeZonePicker_SelectedIndexChanged(object sender, System.EventArgs e)
         {
 
             ComboBox comboBox = (ComboBox) sender;
@@ -93,7 +95,7 @@ namespace SharpClock
             timeZone = (string)timeZonePicker.SelectedItem;
         }
 
-        private DateTime FetchTimeZoneInfo()
+        public DateTime FetchTimeZoneInfo()
         {
             DateTime timeUtc = DateTime.UtcNow;
             TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
@@ -102,7 +104,7 @@ namespace SharpClock
             return timeZoneInfoTime;
         }
 
-        private void Tick(object sender, EventArgs e)
+        public void Tick(object sender, EventArgs e)
         {
             // create an image   
             cg = Graphics.FromImage(bmp);
@@ -158,7 +160,7 @@ namespace SharpClock
             cg.Dispose();
         }
         //coord for minute and second   
-        private int[] MsCoord(int val, int hlen)
+        public int[] MsCoord(int val, int hlen)
         {
             int[] coord = new int[2];
             val *= 6; // note: each minute and seconds make a 6 degree   
@@ -175,13 +177,13 @@ namespace SharpClock
             return coord;
         }
 
-        private void PictureBox1_Click_1(object sender, EventArgs e)
+        public void PictureBox1_Click_1(object sender, EventArgs e)
         {
 
         }
 
         //coord for hour   
-        private int[] HrCoord(int hval, int mval, int hlen)
+        public int[] HrCoord(int hval, int mval, int hlen)
         {
             int[] coord = new int[2];
             //each hour makes 60 degree with min making 0.5 degree   
