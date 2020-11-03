@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SharpClock
@@ -15,8 +16,11 @@ namespace SharpClock
 
         // in center   
         int cy, cx;
+
         Bitmap bmp;
         Graphics cg;
+        private string timeZone;
+        private ComboBox timeZonePicker;
 
         public ClockForm()
         {
@@ -24,11 +28,24 @@ namespace SharpClock
         }
         public void ClockTimer_Tick(object sender, EventArgs e)
         {
-            Clock.Text = DateTime.Now.ToString("T");
+            if (!String.IsNullOrEmpty(timeZone))
+            {
+                Clock.Text = FetchTimeZoneInfo().ToString("T");
+            } else
+            {
+                Clock.Text = DateTime.Now.ToString("T");
+            }
         }
         public void DateTimer_Tick(object sender, EventArgs e)
         {
-            Date.Text = DateTime.Now.ToString("d");
+            if (!String.IsNullOrEmpty(timeZone))
+            {
+                Date.Text = FetchTimeZoneInfo().Date.ToString("d");
+            }
+            else
+            {
+                Date.Text = DateTime.Now.ToString("d");
+            }
         }
         private void ClockForm_Load(object sender, EventArgs e)
         {
@@ -39,19 +56,74 @@ namespace SharpClock
             cy = HEIGHT / 2;
             //backcolor   
             this.BackColor = Color.Black;
+            // TimeZonePicker Dropdown
+            TimeZonePicker();
             //timer   
             t.Interval = 1; // i.e. tick in milisecond   
             t.Tick += new EventHandler(this.Tick);
             t.Start();
         }
+
+        private void TimeZonePicker()
+        {
+            var label = new Label();
+            label.Text = "Select Time Zone";
+            label.ForeColor = System.Drawing.Color.White;
+            label.Location = new System.Drawing.Point(32, 316);
+            this.Controls.Add(label);
+            timeZonePicker = new ComboBox();
+            string[] timeZones = TimeZoneInfo.GetSystemTimeZones().Select(tz => tz.Id).ToArray();
+            timeZonePicker.Items.AddRange(timeZones);
+            timeZonePicker.Location = new System.Drawing.Point(32, 340);
+            timeZonePicker.IntegralHeight = false;
+            timeZonePicker.MaxDropDownItems = 5;
+            timeZonePicker.DropDownStyle = ComboBoxStyle.DropDownList;
+            timeZonePicker.Name = "ComboBox1";
+            timeZonePicker.Size = new System.Drawing.Size(232, 80);
+            timeZonePicker.TabIndex = 0;
+            this.Controls.Add(timeZonePicker);
+            timeZonePicker.SelectedIndexChanged += new EventHandler(TimeZonePicker_SelectedIndexChanged);
+        }
+
+        private void TimeZonePicker_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+            ComboBox comboBox = (ComboBox) sender;
+
+            timeZone = (string)timeZonePicker.SelectedItem;
+        }
+
+        private DateTime FetchTimeZoneInfo()
+        {
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
+            DateTime timeZoneInfoTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, timeZoneInfo);
+
+            return timeZoneInfoTime;
+        }
+
         private void Tick(object sender, EventArgs e)
         {
             // create an image   
             cg = Graphics.FromImage(bmp);
-            //get time   
-            int ss = DateTime.Now.Second;
-            int mm = DateTime.Now.Minute;
-            int hh = DateTime.Now.Hour;
+
+            int ss;
+            int mm;
+            int hh;
+
+            //get time 
+            if (!String.IsNullOrEmpty(timeZone))
+            {
+                var timeZoneInfo = FetchTimeZoneInfo();
+                ss = timeZoneInfo.Second;
+                mm = timeZoneInfo.Minute;
+                hh = timeZoneInfo.Hour;
+            } else
+            {
+                ss = DateTime.Now.Second;
+                mm = DateTime.Now.Minute;
+                hh = DateTime.Now.Hour;
+            }
             _ = new int[2];
             //get time   
             cg.Clear(Color.Black);
