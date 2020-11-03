@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace SharpClock
 {
@@ -97,7 +98,11 @@ namespace SharpClock
             this.Controls.Add(this.Date);
             this.Controls.Add(this.Clock);
             this.ForeColor = System.Drawing.Color.ForestGreen;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowOnly;
             this.Name = "ClockForm";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ClockForm_Load);
