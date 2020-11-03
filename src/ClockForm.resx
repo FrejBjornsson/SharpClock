@@ -71,7 +71,7 @@
   </data>
   <assembly alias="System.Drawing.Primitives" name="System.Drawing.Primitives, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Clock.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>29, 235</value>
+    <value>28, 231</value>
   </data>
   <data name="Clock.Size" type="System.Drawing.Size, System.Drawing.Primitives">
     <value>149, 67</value>
@@ -110,7 +110,7 @@
     <value>TopLeft</value>
   </data>
   <data name="Date.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>29, 321</value>
+    <value>28, 307</value>
   </data>
   <data name="Date.Size" type="System.Drawing.Size, System.Drawing.Primitives">
     <value>124, 76</value>
@@ -140,7 +140,7 @@
     <value>None</value>
   </data>
   <data name="AnalogClockBox.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>358, 168</value>
+    <value>354, 231</value>
   </data>
   <data name="AnalogClockBox.Size" type="System.Drawing.Size, System.Drawing.Primitives">
     <value>334, 316</value>
