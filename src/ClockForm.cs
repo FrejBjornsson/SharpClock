@@ -70,13 +70,13 @@ namespace SharpClock
             label.Text = "Select Time Zone";
             label.ForeColor = System.Drawing.Color.White;
             label.BackColor = System.Drawing.Color.Red;
-            label.Location = new System.Drawing.Point(40, 400);
+            label.Location = new System.Drawing.Point(250, 480);
             label.Size = new System.Drawing.Size(250, 20);
             this.Controls.Add(label);
             timeZonePicker = new ComboBox();
             string[] timeZones = TimeZoneInfo.GetSystemTimeZones().Select(tz => tz.Id).ToArray();
             timeZonePicker.Items.AddRange(timeZones);
-            timeZonePicker.Location = new System.Drawing.Point(40, 420);
+            timeZonePicker.Location = new System.Drawing.Point(250, 500);
             timeZonePicker.IntegralHeight = false;
             timeZonePicker.MaxDropDownItems = 5;
             timeZonePicker.DropDownStyle = ComboBoxStyle.DropDownList;
